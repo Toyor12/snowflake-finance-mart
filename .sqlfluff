@@ -1,0 +1,18 @@
+[sqlfluff]
+dialect = snowflake
+templater = jinja
+max_line_length = 120
+exclude_rules = ST06, AM04
+
+[sqlfluff:indentation]
+indented_ctes = false
+
+[sqlfluff:templater:jinja:macros]
+dbt_ref = {% macro ref(model_name) %}{{ model_name }}{% endmacro %}
+dbt_source = {% macro source(source_name, table_name) %}{{ source_name }}_{{ table_name }}{% endmacro %}
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.identifiers]
+extended_capitalisation_policy = lower
