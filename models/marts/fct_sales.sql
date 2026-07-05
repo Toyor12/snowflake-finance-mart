@@ -1,14 +1,14 @@
--- Grain: one row per order item (the sales line level)
+-- Grain: one row per order item, the sales line level
 select
-    oi.order_id,
-    oi.order_item_id,
-    oi.product_id,
-    o.customer_id,
-    o.order_date,
-    o.order_status,
-    oi.price,
-    oi.freight_value,
-    oi.gross_item_value
-from {{ ref('stg_order_items') }} oi
-inner join {{ ref('stg_orders') }} o
-    on oi.order_id = o.order_id
+    order_items.order_id,
+    order_items.order_item_id,
+    order_items.product_id,
+    orders.customer_id,
+    orders.order_date,
+    orders.order_status,
+    order_items.price,
+    order_items.freight_value,
+    order_items.gross_item_value
+from {{ ref('stg_order_items') }} as order_items
+inner join {{ ref('stg_orders') }} as orders
+    on order_items.order_id = orders.order_id
