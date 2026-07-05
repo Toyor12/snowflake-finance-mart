@@ -11,4 +11,4 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install sqlfluff sqlfluff-templater-dbt dbt-snowflake
-      - run: sqlfluff lint models --dialect snowflake --templater jinja || true
+      - run: sqlfluff lint models --dialect snowflake --templater jinja
